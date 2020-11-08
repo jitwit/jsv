@@ -1,6 +1,9 @@
 load 'jsv.ijs tables/csv' NB. to compare with existing J library for now
 coinsert 'jsv'
 
+NB. tables/csv raw comparison:
+pdsv =: (',';'""')&fixdsv
+
 NB. 100MB csv:
 NB. eg =: 1!:1 < jpath '~/code/city-trees/arbres/montréal/arbres-publics.csv'
 csv0 =: 0 : 0
@@ -68,11 +71,19 @@ a,b,c
 1,2,3
 )
 
+csv07 =: 0 : 0
+a,b,c
+1,2,3
+4,5,ʤ
+)
+
 NB. https://tools.ietf.org/html/rfc4180#section-2
 cases =: 0 : 0
 'bab"a' -: unq '"bab""a"'
 '' -: unq '""'
 (,'"') -: unq '""""'
+NB. fix unq logic: '""' -: unq '""""""'
+NB. fix row start with empty field: 2 3 -: $ csv csv3
 'fact"s' -: cln '"fact""s"'
 (i. 2 5) -: ". > csv csv0
 (_2 ]\ 'ab,cd';'efg';'hi';'j"k') -: csv csv1
@@ -83,6 +94,8 @@ cases =: 0 : 0
 2 2 -: $ csv csv03
 4 3 -: $ csv csv04
 3 2 -: $ csv csv05
+2 3 -: $ csv csv06
+3 3 -: $ csv csv07
 )
 
 0!:2 cases
