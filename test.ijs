@@ -78,7 +78,6 @@ a,b,c
 1,2,3
 4,5,ʤ
 )
-
 NB. https://tools.ietf.org/html/rfc4180#section-2
 cases =: 0 : 0
 'bab"a' -: unq '"bab""a"'
@@ -87,33 +86,15 @@ cases =: 0 : 0
 NB. fix unq logic: '""' -: unq '""""""'
 NB. fix row start with empty field: 2 3 -: $ csv csv3
 'fact"s' -: cln '"fact""s"'
-(i. 2 5) -: ". > csv csv0
-(_2 ]\ 'ab,cd';'efg';'hi';'j"k') -: csv csv1
-((;:'a b'),.2 2 $ a:) -: csv csv2
-2 5 -: $ csv csv00
-3 3 -: $ csv csv01
-3 2 -: $ csv csv02
-2 2 -: $ csv csv03
-4 3 -: $ csv csv04
-3 2 -: $ csv csv05
-2 3 -: $ csv csv06
-3 3 -: $ csv csv07
+1 5 -: ((#@(1 0&{::)),(#@{.)) pcsv csv00
+2 3 -: ((#@(1 0&{::)),(#@{.)) pcsv csv01
+2 3 -: ((#@(1 0&{::)),(#@{.)) pcsv csv01
+2 2 -: ((#@(1 0&{::)),(#@{.)) pcsv csv02
+1 2 -: ((#@(1 0&{::)),(#@{.)) pcsv csv03
+3 3 -: ((#@(1 0&{::)),(#@{.)) pcsv csv04
+2 2 -: ((#@(1 0&{::)),(#@{.)) pcsv csv05
+1 3 -: ((#@(1 0&{::)),(#@{.)) pcsv csv06
+2 3 -: ((#@(1 0&{::)),(#@{.)) pcsv csv07
 )
 
-NB. 0!:2 cases
-NB. 10 {. (10&{.) &.>
-pcsv csv01
-pcsv csv02
-pcsv csv03
-pcsv csv04
-pcsv csv05
-pcsv csv06
-pcsv csv07
-pcsv csv08
-pcsv csv0
-pcsv csv1
-pcsv csv2
-
-NB. 6!:2 'csv eg'
-NB. 6!:2 'pdsv eg'
-
+0!:2 cases
