@@ -5,7 +5,9 @@ NB. tables/csv raw comparison:
 pdsv =: (',';'""')&fixdsv
 
 NB. 100MB csv:
-NB. eg =: 1!:1 < jpath '~/code/city-trees/arbres/montréal/arbres-publics.csv'
+eg =: '~/code/city-trees/arbres/montréal/arbres-publics.csv'
+NB. csv =: rcsv eg
+
 csv0 =: 0 : 0
 "0",1,2,3,"4"
 "5",6,7,8,"9"
@@ -98,4 +100,20 @@ NB. fix row start with empty field: 2 3 -: $ csv csv3
 3 3 -: $ csv csv07
 )
 
-0!:2 cases
+NB. 0!:2 cases
+NB. 10 {. (10&{.) &.>
+pcsv csv01
+pcsv csv02
+pcsv csv03
+pcsv csv04
+pcsv csv05
+pcsv csv06
+pcsv csv07
+pcsv csv08
+pcsv csv0
+pcsv csv1
+pcsv csv2
+
+NB. 6!:2 'csv eg'
+NB. 6!:2 'pdsv eg'
+
