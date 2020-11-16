@@ -1,11 +1,10 @@
 CAPTION=: 'mini csv parser'
 
 DESCRIPTION=: 0 : 0
-based on limited testing, lighter weight and faster than tables/csv,
-though less featureful.
+Use J's mealy machines (;:) for parsing csvs to inverted tables
 )
 
-VERSION=: '1.0.0'
+VERSION=: '1.0.1'
 
 FOLDER=: 'data/jsv'
 

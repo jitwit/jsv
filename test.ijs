@@ -1,4 +1,4 @@
-load 'jsv.ijs tables/csv' NB. to compare with existing J library for now
+load 'jsv.ijs tables/csv'
 coinsert 'jsv'
 
 NB. tables/csv raw comparison:
@@ -27,6 +27,12 @@ NB. how to handle row starting with commas in ;:?
 csv3 =: 0 : 0
 ,a,b
 ,,
+)
+
+csv4 =: 0 : 0
+"Name","Province"
+"1","2"
+"",""
 )
 
 NB. https://github.com/maxogden/csv-spectrum/tree/master/csvs
@@ -98,3 +104,5 @@ NB. fix row start with empty field: 2 3 -: $ csv csv3
 )
 
 0!:2 cases
+pcsv csv4
+datatype strip 1!:1 < '../J-esquisse/Stations.csv'
