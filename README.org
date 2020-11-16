@@ -17,6 +17,7 @@ pcsv =: 3 : 0
 
 #+name: mealy
 #+begin_src J :session :exports both
+NB. how to deal with input that is unicode? seems to give domain error...
 'qchr csep rsep'=: '"';',';LF NB. char classes
 ma =: a. (e.&> i. 1:)"0 _ qchr;csep;rsep NB. alphabet -> char class
 mm =: 4 4 2 $ , ". ;. _2 ] 0 : 0
@@ -92,7 +93,8 @@ bomnoun =: 0 : 0
 )
 bom =: (#~ ([: *./ 0 ~: >)"0) (0&".) &.> ;: bomnoun
 matchbom =: {{ (y {.~ #x) -: u: x=.>x }}"0 _
-stripbom =: {{if. #bm=.I.bom matchbom y do. u: y}.~#bm{::bom else. y end.}}
+NB. 7 u: to keep literal if possible
+stripbom =: {{if. #bm=.I.bom matchbom y do. 7 u: y}.~#bm{::bom else. y end.}}
 #+end_src
 
 ** All together

@@ -15,7 +15,9 @@ bomnoun =: 0 : 0
 )
 bom =: (#~ ([: *./ 0 ~: >)"0) (0&".) &.> ;: bomnoun
 matchbom =: {{ (y {.~ #x) -: u: x=.>x }}"0 _
-stripbom =: {{if. #bm=.I.bom matchbom y do. u: y}.~#bm{::bom else. y end.}}
+NB. 7 u: to keep literal if possible
+stripbom =: {{if. #bm=.I.bom matchbom y do. 7 u: y}.~#bm{::bom else. y end.}}
+NB. how to deal with input that is unicode? seems to give domain error...
 'qchr csep rsep'=: '"';',';LF NB. char classes
 ma =: a. (e.&> i. 1:)"0 _ qchr;csep;rsep NB. alphabet -> char class
 mm =: 4 4 2 $ , ". ;. _2 ] 0 : 0
@@ -46,5 +48,5 @@ pcsv =: 3 : 0
   hd=. cln &.> (0;mm;ma) ;: (j=. y i. rsep){.y =. stripbom y
   hd,:((#fs)$i.#hd) ([:<(cln;.0)&y)/.,."1 fs=.(2;mm;ma);:y=.(1+j)}.y
 )
-rcsv_z_ =: rcsv_jsv_
-pcsv_z_ =: pcsv_jsv_
+rcsv_z_ =: rcsv_jsv_ NB. read from file
+pcsv_z_ =: pcsv_jsv_ NB. read from bytes
